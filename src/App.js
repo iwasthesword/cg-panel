@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useParams } from "react-router-dom";
+import { Container, Row, Col } from "react-grid-system";
 
-function App() {
+export default function App() {
+  let params = useParams();
+  let coins = params.str.split(";");
+  coins.forEach(function(element, index) {
+    coins[index] = element.split(",");
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row>
+      {coins.map(function(coin, i){
+        return <Col style={{marginBottom: '1em'}}><coingecko-coin-price-chart-widget coin-id={coin[0]} currency={coin[1]} height="300"></coingecko-coin-price-chart-widget></Col>
+      })}
+      </Row>
+    </Container>
   );
 }
-
-export default App;
