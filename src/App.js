@@ -8,10 +8,10 @@ export default function App() {
     coins[index] = element.split(",");
   });
   return (
-    <Container>
-      <Row>
+    <Container fluid={true}>
+      <Row align="center" style={{ height: '100vh' }}>
       {coins.map(function(coin, i){
-        return <Col style={{marginBottom: '1em'}}><coingecko-coin-price-chart-widget coin-id={coin[0]} currency={coin[1]} height="300"></coingecko-coin-price-chart-widget></Col>
+        return <Col><coingecko-coin-price-chart-widget coin-id={coin[0]} currency={coin[1]} height="300"></coingecko-coin-price-chart-widget></Col>
       })}
       </Row>
     </Container>
